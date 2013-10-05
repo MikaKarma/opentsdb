@@ -225,10 +225,13 @@ final class IncomingDataPoints implements WritableDataPoints {
       base_time = baseTime();
       final long last_ts = base_time + (delta(qualifiers[size - 1]));
       if (timestamp <= last_ts) {
+          return null;
+          /*
         throw new IllegalArgumentException("New timestamp=" + timestamp
             + " is less than previous=" + last_ts
             + " when trying to add value=" + Arrays.toString(value)
             + " to " + this);
+            */
       } else if (timestamp - base_time >= Const.MAX_TIMESPAN) {
         // Need to start a new row as we've exceeded Const.MAX_TIMESPAN.
         base_time = updateBaseTime(timestamp);
