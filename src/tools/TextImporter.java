@@ -153,6 +153,9 @@ final class TextImporter {
         } else {  // floating point value
           d = dp.addPoint(timestamp, Float.parseFloat(value));
         }
+
+          if (d == null) continue;
+
         d.addErrback(errback);
         points++;
         if (points % 1000000 == 0) {
