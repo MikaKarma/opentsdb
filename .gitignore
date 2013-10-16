@@ -37,3 +37,4 @@ pom.xml
 /opentsdb.iml
 /.idea/uiDesigner.xml
 /.idea/workspace.xml
+*.hprof

@@ -116,7 +116,7 @@ final class HttpQuery {
 
   /** The response object we'll fill with data */
   private final DefaultHttpResponse response =
-    new DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.ACCEPTED);
+    new DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK);
   
   /** The {@code TSDB} instance we belong to */
   private final TSDB tsdb; 
@@ -824,7 +824,7 @@ final class HttpQuery {
       return;
     }
     
-    if (response.getStatus() == HttpResponseStatus.ACCEPTED) {
+    if (response.getStatus() == HttpResponseStatus.OK) {
       response.setStatus(status);
     }
     final boolean keepalive = HttpHeaders.isKeepAlive(request);
@@ -988,7 +988,7 @@ final class HttpQuery {
     // TODO(tsuna): Server, X-Backend, etc. headers.
     // only reset the status if we have the default status, otherwise the user 
     // already set it
-    if (response.getStatus() == HttpResponseStatus.ACCEPTED) {
+    if (response.getStatus() == HttpResponseStatus.OK) {
       response.setStatus(status);
     }
     response.setContent(buf);
